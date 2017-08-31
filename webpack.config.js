@@ -10,19 +10,10 @@ module.exports = {
 				loader: 'babel-loader',
 				options: {
 					compact: false,
-					presets: ['babel-preset-es2015'],
+					presets: ['babel-preset-metal-jsx'],
 					plugins: ['babel-plugin-transform-node-env-inline']
 				}
 			}
-		}, {
-			test: /\.scss$/,
-			use: [{
-				loader: "style-loader"
-			}, {
-				loader: "css-loader"
-			}, {
-				loader: "sass-loader"
-			}]
 		}]
 	},
 	output: {
