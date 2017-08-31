@@ -18,7 +18,6 @@
   "scripts": {
     "build": "npm run soy && webpack",
     "compile": "babel -d lib/ src/",
-    "postinstall": "npm run build",
     "prepublish": "npm run soy && npm run compile",
     "soy": "metalsoy --soyDeps node_modules/metal*/src/**/*.soy node_modules/clay*/src/**/*.soy",
     "start": "http-server . -p 4000",
