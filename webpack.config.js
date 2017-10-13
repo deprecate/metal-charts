@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 	entry: {
@@ -19,21 +20,20 @@ module.exports = {
 			}
 		}, {
 			test: /\.scss$/,
-			use: [{
-				loader: "style-loader"
-			}, {
-				loader: "css-loader"
-			}, {
-				loader: "sass-loader"
-			}]
+			use: ExtractTextPlugin.extract({
+				fallback: 'style-loader',
+				use: ['css-loader', 'sass-loader']
+			})
 		}]
 	},
+	devtool: 'cheap-module-source-map',
 	output: {
 		library: 'metal',
 		libraryTarget: 'this',
 		filename: './build/globals/metal-[name].js'
 	},
 	plugins: [
-		new webpack.optimize.ModuleConcatenationPlugin()
+		new webpack.optimize.ModuleConcatenationPlugin(),
+		new ExtractTextPlugin('./build/metal-charts.css'),
 	]
 };
